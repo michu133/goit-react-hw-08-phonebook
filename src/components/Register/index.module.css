@@ -1,0 +1,25 @@
+.container {
+  display: flex;
+  height: 500px;
+  margin-top: 50px;
+  justify-content: center;
+}
+
+.form label {
+  display: flex;
+  font-size: 25px;
+  margin-bottom: 10px;
+}
+.form label input {
+  margin-left: 5px;
+}
+.submit {
+  font-size: 25px;
+  margin: 0 auto;
+}
+.container input {
+  height: 25px;
+}
+.container input[type='text'] {
+  font-size: 25px;
+}

@@ -2,6 +2,7 @@ import { nanoid } from '@reduxjs/toolkit';
 import { useDispatch } from 'react-redux';
 import { register } from '../../redux/auth/operation';
 import { useState } from 'react';
+import styles from './index.module.css';
 
 export default function Register() {
   const dispatch = useDispatch();
@@ -23,9 +24,8 @@ export default function Register() {
   };
 
   return (
-    <div>
-      Register
-      <form onSubmit={handleSubmit}>
+    <div className={styles.container}>
+      <form className={styles.form} onSubmit={handleSubmit}>
         <label htmlFor={nanoid()}>
           Username
           <input
@@ -56,7 +56,7 @@ export default function Register() {
           />
         </label>
 
-        <button type="submit">Register</button>
+        <button className = {styles.submit}type="submit">Register</button>
       </form>
     </div>
   );

@@ -2,6 +2,7 @@ import { useDispatch } from 'react-redux';
 import { useAuth } from '../../hook/useAuth';
 import { Link, Outlet } from 'react-router-dom';
 import { logout } from '../../redux/auth/operation';
+import styles from './index.module.css';
 
 const UnAuthNav = () => (
   <>
@@ -13,23 +14,29 @@ const UnAuthNav = () => (
 const AuthNav = () => {
   const dispatch = useDispatch();
   const handleClick = () => dispatch(logout());
+
   return (
     <>
-      <button onClick={handleClick}>Logout</button>
-      <Link to="contactform">ContactForm</Link>
+      <Link to="contacts">Contacts</Link>
+
+      <button className={styles.logout} onClick={handleClick}>
+        Logout
+      </button>
     </>
   );
 };
 
 export default function Layout() {
   const { isLoggedIn } = useAuth();
+
   return (
     <div>
-      Layout
-      <nav>
-        <Link to="/goit-react-hw-08-phonebook">Home</Link>
-        {isLoggedIn ? <AuthNav /> : <UnAuthNav />}
-      </nav>
+      <div className={styles.container}>
+        <nav className={styles.menu}>
+          <Link to="/goit-react-hw-08-phonebook">Home</Link>
+          {isLoggedIn ? <AuthNav /> : <UnAuthNav />}
+        </nav>
+      </div>
       <Outlet />
     </div>
   );

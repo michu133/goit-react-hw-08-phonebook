@@ -1,0 +1,10 @@
+.welcome {
+  font-size: 50px;
+  color: gray;
+  margin: 0 auto;
+}
+.container {
+  display: flex;
+  height: 500px;
+  align-items: center;
+}

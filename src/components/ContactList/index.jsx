@@ -26,9 +26,9 @@ export const ContactList = ({ list }) => {
       <h1>Contacts List</h1>
       <ul>
         {isLoading && <p>Loading...</p>}
-        {list.map(({ id, name, phone }) => (
+        {list.map(({ id, name, number }) => (
           <li key={id}>
-            {name}: {phone}
+            {name}: {number}
             <button
               onClick={() => {
                 handleDelete(id);

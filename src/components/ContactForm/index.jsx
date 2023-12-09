@@ -2,6 +2,8 @@ import { nanoid } from '@reduxjs/toolkit';
 import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { addContact } from '../../redux/operations';
+import { Helmet } from 'react-helmet';
+
 
 export const ContactForm = () => {
   const [number, setNumber] = useState('');
@@ -21,7 +23,7 @@ export const ContactForm = () => {
   const handleSubmit = e => {
     e.preventDefault();
 
-    const contactExists = contacts.some(contact => contact.phone === number);
+    const contactExists = contacts.some(contact => contact.number === number);
 
     if (contactExists) {
       alert('Contact with the number already exists.');
@@ -32,7 +34,7 @@ export const ContactForm = () => {
 
     const newContact = {
       name: name,
-      phone: number,
+      number: number,
     };
 
     dispatch(addContact(newContact));
@@ -42,7 +44,10 @@ export const ContactForm = () => {
 
   return (
     <div>
-      <h1>Add contact</h1>
+      <Helmet>
+        <title>Contacts</title>
+      </Helmet>
+      ;<h1>Add contact</h1>
       <form onSubmit={handleSubmit}>
         <label htmlFor={nanoid()}>
           Name

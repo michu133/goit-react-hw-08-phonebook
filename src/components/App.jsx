@@ -1,5 +1,3 @@
-import { ContactForm } from './ContactForm';
-
 import { Routes, Route } from 'react-router-dom';
 import Layout from './Layout';
 import Login from './Login';
@@ -7,8 +5,18 @@ import Register from './Register';
 import { Home } from './Home';
 import PrivateRoute from './PrivateRoute';
 import ProtectedRoute from './ProtectedRoute';
+import { useEffect } from 'react';
+import { useDispatch } from 'react-redux';
+import { me } from '../redux/auth/operation';
+import { ContactPage } from './ContactPage';
 
 export const App = () => {
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(me());
+  }, [dispatch]);
+
   return (
     <Routes>
       <Route path="/goit-react-hw-08-phonebook" element={<Layout />}>
@@ -18,7 +26,7 @@ export const App = () => {
           element={
             <ProtectedRoute
               element={<Register />}
-              redirect={'/goit-react-hw-08-phonebook/contactform'}
+              redirect={'/goit-react-hw-08-phonebook/contacts'}
             />
           }
         ></Route>
@@ -27,15 +35,15 @@ export const App = () => {
           element={
             <ProtectedRoute
               element={<Login />}
-              redirect={'/goit-react-hw-08-phonebook/contactform'}
+              redirect={'/goit-react-hw-08-phonebook/contacts'}
             />
           }
         ></Route>
         <Route
-          path="contactform"
+          path="contacts"
           element={
             <PrivateRoute
-              element={<ContactForm />}
+              element={<ContactPage />}
               redirect="/goit-react-hw-08-phonebook/login"
             />
           }
