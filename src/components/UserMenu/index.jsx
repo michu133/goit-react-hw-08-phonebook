@@ -10,7 +10,7 @@ export const UserMenu = () => {
 
   return (
     <div className={styles.container}>
-      <p>Email: {typeof user === 'object' ? user.name : user}</p>
+      <p>Current user: {typeof user === 'object' ? user.name : user}</p>
       <button className={styles.btn} onClick={handleClick}>
         Logout
       </button>
