@@ -1,8 +1,8 @@
-import { useDispatch } from 'react-redux';
 import { useAuth } from '../../hook/useAuth';
 import { Link, Outlet } from 'react-router-dom';
-import { logout } from '../../redux/auth/operation';
+
 import styles from './index.module.css';
+import { UserMenu } from 'components/UserMenu';
 
 const UnAuthNav = () => (
   <>
@@ -12,16 +12,10 @@ const UnAuthNav = () => (
 );
 
 const AuthNav = () => {
-  const dispatch = useDispatch();
-  const handleClick = () => dispatch(logout());
-
   return (
     <>
       <Link to="contacts">Contacts</Link>
-
-      <button className={styles.logout} onClick={handleClick}>
-        Logout
-      </button>
+      <UserMenu />
     </>
   );
 };

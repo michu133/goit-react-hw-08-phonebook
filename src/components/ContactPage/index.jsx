@@ -3,7 +3,7 @@ import { Filter } from 'components/Filter';
 
 export const ContactPage = () => {
   return (
-    <div>
+    <div >
       <ContactForm />
       <Filter />
     </div>
